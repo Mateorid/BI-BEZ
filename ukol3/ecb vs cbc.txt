@@ -1,0 +1,2 @@
+Po ECB sifrovani se jeste celkem jednoduse da pohledem poznat co bylo na puvodnim obrazku. Jsou pouze zmeneny barvy a obrazek ma 2 "stiny".
+Po CBC sifrovani je nemozne pohledem zjistit co bylo na puvodnim obrazku. Obrazek je pouze nahodna zmet pixelu.
