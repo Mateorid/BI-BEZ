@@ -1,0 +1,36 @@
+Napište program, který zkopíruje hlavičku a zašifruje část souboru s obrazovými daty pomocí AES v módu ECB. Výstupní soubor se bude jmenovat (původní_jméno)_ecb.tga.
+Napište program, který dešifruje obrázek zašifrovaný prvním programem. Výstupní soubor se bude jmenovat (původní_jméno)_dec.tga
+  Porovnejte původní obrázek a jeho zašifrovanou podobu a vysvětlete svá zjištění.
+Změňte pro šifrování i dešifrování použitý operační mód na CBC a vytvořte (původní_jméno)_cbc.tga a (původní_jméno)_cbc_dec.tga (upřesní cvičící).
+Porovnejte původní obrázek a jeho zašifrovanou podobu a vysvětlete svá zjištění.
+Jako šifru zvolte 128b variantu AES a používejte PKCS padding (v openssl je nastaven jako default)
+Program se bude volat s následujícími přepínači/argumenty (dodržte pořadí, nebo ho pevně nevyžadujte):
+  -e / -d šifrování/dešifrování
+  ecb / cbc operační mód ecb/cbc
+  název vstupního souboru (zadává se celý název souboru - včetně přípony)
+  
+Ukázka 1. Příklad volání
+$ ./task3 -e ecb homer-simpson.tga
+
+$ ./task3 -d ecb homer-simpson_ecb.tga
+
+Výstup:
+  V případě chyby žádný výstupní soubor
+  Zašifrovaný soubor s příponou _ecb.tga/_cbc.tga (celý název je tedy např. '(původní_jméno)_ecb.tga')
+  Dešifrovaný soubor s příponou _dec.tga (celý název je tedy např. '(původní_jméno)_ecb_dec.tga')
+  
+Ukázka 2. Příklad názvů
+  homer-simpson.tga -> (zašifrujeme v CBC módu) -> homer-simpson_cbc.tga
+  homer-simpson_cbc.tga -> (dešifrujeme) -> homer-simpson_cbc_dec.tga
+  
+Návratové hodnoty:
+  0 vše OK
+  !=0 chyba
+  
+Při zpracování souboru nesmíte načítat celý obrázek do paměti a ten pak dále zpracovávat, ale dělejte to po částech.
+Cílem je vyzkoušet si práci postupného zpracování pomocí funkce EncryptUpdate. Můžete si např. zadefinovat, že budete zpracovávat části po 1KB.
+Hlídejte si zpracování hlavičky TGA souboru, kdykoliv něco nesedí, program ukončete s chybou.
+  Např. pozor na správnost načtení samotné hlavičky TGA souboru
+  Začátek mapy barev za koncem souboru
+  
+Kromě samotného programu odevzdejte popis rozdílu mezi ECB a CBC u zašifrovaných souborů (ve vztahu k původním).
